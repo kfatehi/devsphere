@@ -2,13 +2,14 @@
   <div id="time"><%= current_time %></div>
   <div id="usernav">
     <% if current_user %>
-      <%= image_tag current_user.gravatar %>
+      <%= image_tag current_user.gravatar %><br>
+      Welcome back, <%= current_user.nickname %>!
       <%= link_to "Logout", "users/sign_out", :method=>:delete %>
     <% else %>
-      <%= form_for (user=User.new), :url=>user_session_path(user) do |f| %>
+      <%= form_for (@new_user), :url=>user_session_path(@new_user) do |f| %>
         <p><%= f.label :email %><br><%= f.text_field :email %></p>
         <p><%= f.label :password %><br><%= f.password_field :password %></p>
-        <%= f.submit "Login" %><%= f.submit "Register", :id=>"register" %>
+        <%= f.submit "Login" %><br><%= link_to "Register", new_user_registration_path %>
       <% end %>
     <% end %>
   </div>
@@ -28,8 +29,12 @@
     <%= select_tag :time_filter, options_for_select(["From Last Week"])%>
   </div>
   <div id="posts">
+    <%= render :partial => 'new_thread' if user_signed_in? %>
     <% @posts.each do |post| %>
-      <%= render :partial => 'post', :locals=>{:post=>post} %>
+      <div class="top_level">
+        <%= render :partial => 'post', :locals=>{:post=>post, :depth=>0} %>
+      </div>
     <% end %>
+    <%= render :partial => 'new_thread' if user_signed_in? %>
   </div>
 </div>

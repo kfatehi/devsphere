@@ -1,12 +1,27 @@
 <div class="post">
   <div class="gravatar"><%= image_tag post.user.gravatar %></div>
-  <div class="nick"><%= post.user.email %></div>
+  <div class="nick"><%= post.user.nickname %></div>
   <div class="body"><%= post.body %></div>
+  <div class="reply_to">
+  <% if depth < Post::DEPTH_LIMIT %>
+    <% if user_signed_in? %>
+      <%= button_tag "Comment", :class=>:shytoggle %>
+      <div class="shybox" style="display:none">
+        <%= button_tag "Cancel", :class=>"hide_parent" %>
+        <%= form_for @new_post do |f| %>
+          <%= f.hidden_field :parent_id, :value=>post.id %>
+          <%= f.text_area :body %><br>
+          <%= submit_tag "Submit" %>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+  </div>
   <% if replies = post.replies %>
     <div class="children">
       <% replies.each do |reply| %>
-        <%= render :partial => 'post', :locals=>{:post=>reply} %>
+        <%= render :partial => 'post', :locals=>{:post=>reply, :depth=>depth+1} %>
       <% end %>
     </div>
-  <% end %>
+  <% end %>  
 </div>

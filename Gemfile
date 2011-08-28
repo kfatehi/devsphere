@@ -7,6 +7,7 @@ gem 'rails', '3.1.0.rc6'
 
 gem 'mysql2'
 gem 'devise'
+
 gem 'carrierwave'
 
 
@@ -14,7 +15,7 @@ gem 'carrierwave'
 # in production environments by default.
 group :assets do
   gem 'sass-rails', "  ~> 3.1.0.rc"
-  gem 'coffee-rails', "~> 3.1.0.rc"
+#  gem 'coffee-rails', "~> 3.1.0.rc"
   gem 'uglifier'
 end
 

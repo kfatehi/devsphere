@@ -21,8 +21,8 @@ html {
 #content {
   float:left;
   width:610px;
-  padding:10px;
   border:1px dotted black;
+  padding:10px;
 }
 
 #rightcol {
@@ -42,13 +42,36 @@ html {
 
 #posts {
   clear:both;
-  margin:5px auto auto auto;
+  margin:30px auto auto auto;
   background-color:lighten(#ccc, 10%);;
 }
 
-
 .post {
-  margin:10px;
-  background-color:#bcc;
+  margin:20px auto;
+  padding:10px;
+}
 
+#posts .top_level {
+  background-color:#bcc;
+}
+
+.children {
+  margin:10px auto  auto 15px;
+  background-color:lighten(#bcc, 10%);
+}
+
+.shybox {
+  position:relative;
+}
+
+.shybox textarea {
+  height: 180px;
+  margin: 10px;
+  width: 565px;
+}
+
+.shybox .close {
+  position:absolute;
+  top:5px;
+  right:5px;
 }
