@@ -7,3 +7,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+//= require jquery.easing.1.3
+//= require jquery.scrollTo
