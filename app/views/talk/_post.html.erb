@@ -1,0 +1,12 @@
+<div class="post">
+  <div class="gravatar"><%= image_tag post.user.gravatar %></div>
+  <div class="nick"><%= post.user.email %></div>
+  <div class="body"><%= post.body %></div>
+  <% if replies = post.replies %>
+    <div class="children">
+      <% replies.each do |reply| %>
+        <%= render :partial => 'post', :locals=>{:post=>reply} %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

@@ -5,9 +5,50 @@
 html {
   font-family:"Helvetica", Helvetica, sans-serif;
 }
+
+#talkwrapper {
+  margin:auto;
+  width:900px;
+}
+
 .notice {
   color: green;
 }
 .alert {
   color: red;
+}
+
+#content {
+  float:left;
+  width:610px;
+  padding:10px;
+  border:1px dotted black;
+}
+
+#rightcol {
+  float:right;
+  padding:20px;
+  width:215px;
+  border:1px dotted black;
+}
+
+#search {
+  float:left;
+}
+
+#filters {
+  float:right;
+}
+
+#posts {
+  clear:both;
+  margin:5px auto auto auto;
+  background-color:lighten(#ccc, 10%);;
+}
+
+
+.post {
+  margin:10px;
+  background-color:#bcc;
+
 }

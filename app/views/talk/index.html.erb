@@ -18,3 +18,18 @@
     <% end %>
   </ul>
 </div>
+<div id="content">
+  <div id="search">
+    <%= text_field_tag :search %>
+    <%= button_tag "Search" %>
+  </div>
+  <div id="filters">
+    <%= button_tag "All Uploads" %>
+    <%= select_tag :time_filter, options_for_select(["From Last Week"])%>
+  </div>
+  <div id="posts">
+    <% @posts.each do |post| %>
+      <%= render :partial => 'post', :locals=>{:post=>post} %>
+    <% end %>
+  </div>
+</div>
