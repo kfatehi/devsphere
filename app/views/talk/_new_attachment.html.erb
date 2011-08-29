@@ -1,9 +1,0 @@
-<%= button_tag "Attach a File", :class=>:shytoggle %>
-<div class="shybox" style="display:none">
-  <%= button_tag "Close File Upload Form", :class=>"hide_parent" %>
-  <%= form_for @new_attachment, :html => {:multipart => true} do |f| %>
-    <%= f.file_field :file %><br>
-    <%= f.hidden_field :post_id, :value=>post.id %>
-    <%= submit_tag "Upload" %>
-  <% end %>
-</div>

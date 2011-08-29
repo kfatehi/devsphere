@@ -8,6 +8,11 @@ html {
   font-family:"Helvetica", Helvetica, sans-serif;
 }
 
+.post .actions {
+  font-size: 0.8em;
+  margin:10px;
+}
+
 #posts .avatar {
   height:$avatar_size;
   float:left;
