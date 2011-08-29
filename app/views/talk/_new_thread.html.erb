@@ -1,8 +1,0 @@
-<%= button_tag "Create New Thread", :class=>:shytoggle %>
-<div class="shybox" style="display:none">
-  <%= button_tag "Cancel", :class=>"hide_parent" %>
-  <%= form_for @new_post do |f| %>
-    <%= f.text_area :body %><br>
-    <%= submit_tag "Submit" %>
-  <% end %>
-</div>
