@@ -1,6 +1,7 @@
 Devsphere::Application.routes.draw do
   devise_for :users
   resources :posts
+  resources :attachments
   root :to => "talk#index"
 
   # The priority is based upon order of creation:

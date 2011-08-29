@@ -1,0 +1,9 @@
+<%= button_tag "Add Reply", :class=>:shytoggle %>
+<div class="shybox" style="display:none">
+  <%= button_tag "Close Reply Form", :class=>"hide_parent" %>
+  <%= form_for @new_post do |f| %>
+    <%= f.hidden_field :parent_id, :value=>post.id %>
+    <%= f.text_area :body %><br>
+    <%= submit_tag "Submit" %>
+  <% end %>
+</div>

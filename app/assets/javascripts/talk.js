@@ -3,7 +3,7 @@ $(function() {
     $(this).next().show();
     $(this).hide();
     
-    $.scrollTo($(this).parent() , 800, {easing:'easeOutQuint'} );
+    //$.scrollTo($(this).parent() , 800, {easing:'easeOutQuint'} );
 
     
   });

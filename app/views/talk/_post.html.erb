@@ -1,21 +1,23 @@
 <div class="post">
-  <div class="gravatar"><%= image_tag post.user.gravatar %></div>
-  <div class="nick"><%= post.user.nickname %></div>
-  <div class="body"><%= post.body %></div>
-  <div class="reply_to">
-  <% if depth < Post::DEPTH_LIMIT %>
+  <%= image_tag post.user.gravatar, :class=>"avatar" %>
+  <div class="body"><%= post.body %>
+  
+
+  </div>
+  <div class="who_when">
+    posted by <%= post.user.nickname %>
+    <%= time_ago_in_words post.created_at %> ago
+  </div>
+  <div class="actions">
     <% if user_signed_in? %>
-      <%= button_tag "Comment", :class=>:shytoggle %>
-      <div class="shybox" style="display:none">
-        <%= button_tag "Cancel", :class=>"hide_parent" %>
-        <%= form_for @new_post do |f| %>
-          <%= f.hidden_field :parent_id, :value=>post.id %>
-          <%= f.text_area :body %><br>
-          <%= submit_tag "Submit" %>
-        <% end %>
-      </div>
+      <%= render :partial => 'new_comment', :locals=>{:post=>post} if depth < Post::DEPTH_LIMIT %>
+      <%= render :partial => 'new_attachment', :locals=>{:post=>post} %>
     <% end %>
-  <% end %>
+  </div>
+  <div class="attachments">
+    <% post.attachments.each do |a| %>
+      <%= link_to a.file_identifier, a.file_url %> attached by <%= a.user.nickname %> <%= time_ago_in_words a.created_at %>
+    <% end %>
   </div>
   <% if replies = post.replies %>
     <div class="children">

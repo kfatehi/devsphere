@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :posts
+  has_many :attachments
   validates :nickname, :presence=>true, :uniqueness=>true
   validates :email, :uniqueness=>true
   validates :password, :length=>{:minimum=>3}

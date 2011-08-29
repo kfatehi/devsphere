@@ -2,8 +2,32 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$avatar_size: 48px;
+
 html {
   font-family:"Helvetica", Helvetica, sans-serif;
+}
+
+#posts .avatar {
+  height:$avatar_size;
+  float:left;
+  margin:5px;
+}
+
+#posts .post {
+  clear:both;
+}
+
+.post .body {
+  min-height:$avatar_size;
+}
+
+.post .who_when {
+  font-size:0.8em;
+}
+
+.post .attachments {
+  font-size:0.8em;
 }
 
 #talkwrapper {
@@ -48,17 +72,19 @@ html {
   background-color:lighten(#ccc, 10%);;
 }
 
-.post {
-  margin:20px auto;
-  padding:10px;
+.children .post {
+  background-color:#cbc;
+  margin:10px auto;
 }
 
 #posts .top_level {
   background-color:#bcc;
+  margin:10px auto;
 }
 
 .children {
-  margin:10px auto  auto 15px;
+  clear:both;
+  margin:10px auto  auto 20px;
   background-color:lighten(#bcc, 10%);
 }
 
