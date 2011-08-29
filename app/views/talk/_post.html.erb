@@ -5,12 +5,16 @@
 
   </div>
   <div class="who_when">
-    posted by <%= post.user.nickname %>
+    posted by <%= link_to post.user.nickname, talk_user_profile_path(post.user) %>
     <%= time_ago_in_words post.created_at %> ago
   </div>
   <% if user_signed_in? %>
     <div class="actions">
-    <%= link_to_new_post("Reply", :parent=>post) if can_nest? depth %>
+    <% if only_post %>
+      <%= link_to "See Full Thread", talk_thread_path(post) %>
+    <% else %>
+      <%= link_to_new_post("Reply", :parent=>post) if can_nest?(depth) %>
+    <% end %>
     </div>
   <% end %>
 
@@ -22,7 +26,7 @@
     </div>
   <% end %>
   
-  <% if replies = post.replies %>
+  <% if (replies = post.replies) && !only_post %>
     <div class="children">
       <% replies.each do |reply| %>
         <%= render_post reply, :depth=>depth %>

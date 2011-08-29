@@ -1,40 +1,17 @@
-<div id="rightcol">
-  <div id="time"><%= custom_time Time.now %></div>
-  <div id="usernav">
-    <% if current_user %>
-      <%= image_tag current_user.gravatar %><br>
-      Welcome back, <%= current_user.nickname %>!
-      <%= link_to "Logout", "users/sign_out", :method=>:delete %>
-    <% else %>
-      <%= form_for @new_user, :url=>user_session_path(@new_user) do |f| %>
-        <p><%= f.label :email %><br><%= f.text_field :email %></p>
-        <p><%= f.label :password %><br><%= f.password_field :password %></p>
-        <%= f.submit "Login" %><br><%= link_to "Register", new_user_registration_path %>
-      <% end %>
-    <% end %>
-  </div>
-  <ul id="links">
-    <% TALK_LINKS.each do |k,v| %>
-      <li><%= link_to(k,v) %></li>
-    <% end %>
-  </ul>
+<div id="search">
+  <%= text_field_tag :search %>
+  <%= button_tag "Search" %>
 </div>
-<div id="content">
-  <div id="search">
-    <%= text_field_tag :search %>
-    <%= button_tag "Search" %>
-  </div>
-  <div id="filters">
-    <%= button_tag "All Uploads" %>
-    <%= select_tag :time_filter, options_for_select(["From Last Week"])%>
-  </div>
-  <div id="posts">
-    <%= link_to_new_post("New Thread") if user_signed_in? %>
-    <% @posts.each do |post| %>
-      <div class="top_level">
-        <%= render_post post %>
-      </div>
-    <% end %>
-    <center><%= link_to "Return to top", "#" %></center>
-  </div>
+<div id="filters">
+  <%= button_tag "All Uploads" %>
+  <%= select_tag :time_filter, options_for_select(["From Last Week"])%>
+</div>
+<div id="posts">
+  <%= link_to_new_post("New Thread") if user_signed_in? %>
+  <% @posts.each do |post| %>
+    <div class="top_level">
+      <%= render_post post %>
+    </div>
+  <% end %>
+  <center><%= link_to "Return to top", "#" %></center>
 </div>

@@ -12,7 +12,12 @@ module TalkHelper
   end
 
   def render_post(post, opts={})
-    depth = (opts[:depth].nil? ? 0 : opts[:depth]+1)
-    render :partial => 'post', :locals=>{:post=>post, :depth=>depth}
+    if opts[:only_post]
+      locals = {:post=>post, :depth=>nil, :only_post=>true}
+    else
+      depth = (opts[:depth].nil? ? 0 : opts[:depth]+1)
+      locals = {:post=>post, :depth=>depth, :only_post=>false}
+    end
+    render :partial => 'post', :locals=>locals
   end
 end

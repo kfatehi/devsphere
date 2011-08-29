@@ -14,8 +14,34 @@
     <p class="flash alert"><%= alert %></p>
   <% end %>
 
+
+
   <div id="talkwrapper">
-    <%= yield %>
+    <div id="rightcol">
+      <div id="time"><%= custom_time Time.now %></div>
+      <div id="usernav">
+        <% if current_user %>
+          <%= image_tag current_user.gravatar %><br>
+          Welcome back, <%= link_to current_user.nickname, talk_user_profile_path(current_user) %>!
+          <%= link_to "Logout", "users/sign_out", :method=>:delete %>
+        <% else %>
+          <%= form_for @new_user, :url=>user_session_path(@new_user) do |f| %>
+            <p><%= f.label :email %><br><%= f.text_field :email %></p>
+            <p><%= f.label :password %><br><%= f.password_field :password %></p>
+            <%= f.submit "Login" %><br><%= link_to "Register", new_user_registration_path %>
+          <% end %>
+        <% end %>
+      </div>
+      <ul id="links">
+        <%= link_to("Home", root_path) unless current_page?(root_url) %>
+        <% TALK_LINKS.each do |k,v| %>
+          <li><%= link_to(k,v) %></li>
+        <% end %>
+      </ul>
+    </div>
+    <div id="content">
+      <%= yield %>
+    </div>
   </div>
 </body>
 </html>

@@ -2,6 +2,10 @@ Devsphere::Application.routes.draw do
   devise_for :users
   resources :posts
   resources :attachments
+
+  get '/talk/users/:id/profile' => 'talk#user_profile', :as => :talk_user_profile
+  get '/talk/threads/:id' => 'talk#single_thread', :as => :talk_thread
+
   root :to => "talk#index"
 
   # The priority is based upon order of creation:
