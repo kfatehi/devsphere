@@ -8,20 +8,24 @@
     posted by <%= post.user.nickname %>
     <%= time_ago_in_words post.created_at %> ago
   </div>
-  <div class="actions">
-    <% if user_signed_in? %>
-      <%= render :partial => 'new_comment', :locals=>{:post=>post} if depth < Post::DEPTH_LIMIT %>
-    <% end %>
-  </div>
-  <div class="attachments">
-    <% post.attachments.each do |a| %>
-      <%= link_to a.file_identifier, a.file_url %> attached by <%= a.user.nickname %> <%= time_ago_in_words a.created_at %>
-    <% end %>
-  </div>
+  <% if user_signed_in? %>
+    <div class="actions">
+    <%= link_to_new_post("Reply", :parent=>post) if can_nest? depth %>
+    </div>
+  <% end %>
+
+  <% if (attachments = post.attachments) && attachments.any? %>
+    <div class="attachments">
+      <% attachments.each do |a| %>
+        <%= link_to a.file_identifier, a.file_url %>
+      <% end %>
+    </div>
+  <% end %>
+  
   <% if replies = post.replies %>
     <div class="children">
       <% replies.each do |reply| %>
-        <%= render :partial => 'post', :locals=>{:post=>reply, :depth=>depth+1} %>
+        <%= render_post reply, :depth=>depth %>
       <% end %>
     </div>
   <% end %>  

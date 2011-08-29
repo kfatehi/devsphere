@@ -7,8 +7,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-       <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
+  <% if notice.present? %>
+    <p class="flash notice"><%= notice %></p>
+  <% end %>
+  <% if alert.present? %>
+    <p class="flash alert"><%= alert %></p>
+  <% end %>
 
   <div id="talkwrapper">
     <%= yield %>

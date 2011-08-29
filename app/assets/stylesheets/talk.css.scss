@@ -8,6 +8,21 @@ html {
   font-family:"Helvetica", Helvetica, sans-serif;
 }
 
+.flash {
+  text-align:center;
+  padding:10px;
+  margin:15px auto;
+  width:600px;
+}
+.notice {
+  background-color: lighten(#1BE04C, 40%);
+  border:1px solid #1BE04C;
+}
+.alert {
+  background-color: lighten(#E01B4C, 40%);
+  border:1px solid #E01B4C;
+}
+
 .post .actions {
   font-size: 0.8em;
   margin:10px;
@@ -33,20 +48,35 @@ html {
 
 .post .attachments {
   font-size:0.8em;
+  margin:10px 20px;
+  padding:5px;
+}
+
+.post .attachments a {
+  font-size:0.9em;
+  font-weight:bold;
+  color:darken(#A2D7FC, 20%);
+  background-color:darken(#5D6469, 20%);
+  padding:3px 6px;
+  border-radius:9px;
+  text-decoration:none;
+  margin-right:3px;
+}
+
+.post .attachments a:hover {
+  font-size:0.9em;
+  font-weight:bold;
+  color:#A2D7FC;
+  background-color:#5D6469;
+  padding:3px 5px;
+  border-radius:8px;
+  text-decoration:none;
+  margin-right:3px;
 }
 
 #talkwrapper {
   margin:auto;
   width:900px;
-}
-
-.notice {
-  color: green;
-  text-align:center;
-}
-.alert {
-  color: red;
-  text-align:center
 }
 
 #content {
@@ -74,7 +104,7 @@ html {
 #posts {
   clear:both;
   margin:30px auto auto auto;
-  background-color:lighten(#ccc, 10%);;
+  background-color:lighten(#ccc, 10%);
 }
 
 .children .post {
@@ -108,3 +138,4 @@ html {
   top:5px;
   right:5px;
 }
+
