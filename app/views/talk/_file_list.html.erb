@@ -1,0 +1,12 @@
+<ul id="file_list">
+  <% @files.each do |f| %>
+    <li>
+      <%= link_to f.user.nickname, talk_user_profile_path(f.user), :class=>:graylink %> (<%= f.user.points %>)
+      <%= link_to "uploaded", talk_permalink_path(f.post), :class=>:graylink %>
+      <br>
+      <%= link_to f.file_identifier, f.file_url, :class=>'file' %>
+      <br>
+      <%= time_ago_in_words f.created_at %> ago
+    </li>
+  <% end %>
+</ul>

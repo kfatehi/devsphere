@@ -3,7 +3,7 @@ class Post < ActiveRecord::Base
   belongs_to :user
   belongs_to :post
   has_many :attachments, :dependent => :destroy
-  has_many :posts, :foreign_key => :parent_id
+  has_many :posts, :foreign_key => :parent_id, :dependent=>:destroy
   has_many :taggings, :dependent => :destroy
   has_many :tags, :through => :taggings
   
@@ -12,7 +12,7 @@ class Post < ActiveRecord::Base
   
   before_save :process_body
 
-  def self.top_level
+  def self.threads
     # Only get the top level posts
     where("parent_id IS NULL").order("updated_at DESC")
   end

@@ -1,20 +1,24 @@
 $(function() {
   $('.shytoggle').click(function(){
     $(this).next().show();
-    $(this).hide();
+    $(this).next().find('textarea#post_body').focus()
     return false;
   });
   $('.shybox .hide_parent').click(function(){
     $(this).parents('.shybox').hide();
-    $(this).parents('.shybox').prev().show();
     return false;
   });
 
   $('.post .expand').live('click', function() {
     var button = $(this);
-    $(this).parent().next('div.expandable').toggle('fast', 'easeInQuint', function () {
+    $(this).parent().next('div.expandable').toggle('fast', 'easeOutQuad', function () {
       button.text(($(this).is(':visible') ? '[-]' : '[+]'));
     });
+    return false;
+  });
+
+  $('.jump_to_parent').live('click', function() {
+    $.scrollTo($(this).parents('.post')[1], 'slow', {easing:'easeInQuad'})
     return false;
   });
 

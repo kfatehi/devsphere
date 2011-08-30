@@ -4,7 +4,9 @@ module TalkHelper
   end
 
   def link_to_new_post(text, opts={})
-    render :partial => 'new_post', :locals=>{:link_text=>text, :parent=>opts[:parent]}
+    render :partial => 'new_post', :locals=>{ :link_text=>text,
+                                              :parent=>opts[:parent],
+                                              :link_class=>opts[:class]}
   end
 
   def can_nest?(depth)

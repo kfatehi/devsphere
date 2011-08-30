@@ -2,22 +2,105 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-$avatar_size: 48px;
+$avatar_size: 42px;
 
 html {
   font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
+h1 {
+  margin:5px;
+}
 
+#links {
+  min-height:32px;
+}
+
+#links a {
+  font-size:0.9em;
+  font-weight:bold;
+  color:darken(#A2D7FC, 15%);
+  padding:3px 6px;
+  border:1px solid #FFF;
+  text-decoration:none;
+  margin:0 10px;
+}
+
+#links a:hover {
+  font-size:0.9em;
+  font-weight:bold;
+  color:darken(#A2D7FC, 15%);
+  border:1px solid #4F6D80;
+  padding:3px 6px;
+  border-radius:3px;
+  text-decoration:none;
+}
+
+a.new_thread {
+  left: 250px;
+  position: absolute;
+  top: -35px;
+}
+
+a.silver_button {
+  border: 1px solid transparent;
+  border-radius: 3px 3px 3px 3px;
+  color: #555555;
+  display: inline-block;
+  text-decoration:none;
+  font-size:1em;
+  font-style: normal;
+  line-height: 18px;
+  padding: 5px 10px;
+  text-shadow: 0 1px white;
+  font-family:'Helvetica', 'Arial';
+  background: -moz-linear-gradient(bottom center, #CCC, #FFF);
+  background: -webkit-gradient(linear, center bottom, center top, from(#CCC), to(#FFF));
+  box-shadow: 0px 1px 0px #fff inset;
+  border: 1px solid #ADADAD;
+}
+
+a.silver_button:active {
+  background: -moz-linear-gradient(bottom center, #EEE, #BBB);
+  background: -webkit-gradient(linear, center bottom, center top, from(#EEE), to(#BBB));
+}
+
+a.silver_button:hover {
+  background: -moz-linear-gradient(bottom center, #FFF, #CCC);
+  background: -webkit-gradient(linear, center bottom, center top, from(#FFF), to(#CCC));
+}
+
+.new_post .actions {
+  text-align:center;
+}
+
+.new_post .actions .finish {
+  font-family: Helvetica;
+  font-size: 17px;
+  height: 40px;
+  margin: 10px 50px;
+  width: 90px;
+}
+
+.new_post .actions .attachment_fields label {
+  color:#666;
+  font:bold 0.8em verdana,arial,helvetica,sans-serif;
+}
+
+#posts {
+  position:relative;
+}
 
 #posts .post {
   background: -moz-linear-gradient(top center, #f1f1f1, #E5E5E5);
   background: -webkit-gradient(linear, center top, center bottom, from(#FBFBFB), to(#E5E5E5));
-  box-shadow: 0px 0px 1px #999;
-  -webkit-box-shadow: 0px 0px 1px #666;
-  -moz-box-shadow: 0px 0px 1px #666;
+  box-shadow: -1px 1px 6px #666666;
+  //-webkit-box-shadow: 0px 0px 1px #666;
+  //-moz-box-shadow: 0px 0px 1px #666;
+  -webkit-box-shadow:-1px 1px 6px #666666;
+  -moz-box-shadow: -1px 1px 6px #666666;
   border: 1px solid white;
   padding: 10px 0 5px 10px;
-  margin: 10px 1px 20px 0px;
+  margin: 10px 1px 15px 0px;
   border-radius: 3px;
   position:relative;
   overflow:hidden;
@@ -36,19 +119,32 @@ html {
 .notice {
   background-color: lighten(#1BE04C, 40%);
   border:1px solid #1BE04C;
+  padding:5px;
 }
 .alert {
   background-color: lighten(#E01B4C, 40%);
   border:1px solid #E01B4C;
+  padding:5px;
 }
 
 #posts {
   margin:30px auto auto auto;
 }
 
-.post .actions {
-  font-size: 0.8em;
-  margin:10px;
+.post .bottom_bar a {
+  font:normal 0.8em verdana, arial, helvetica, sans-serif;
+  color:#888;
+  text-decoration:none;
+  margin-left:20px;
+  font-weight:bold;
+}
+
+.post .bottom_bar a:hover {
+  color:#666;
+}
+
+.post .top_bar {
+  font:normal x-small verdana, arial, helvetica, sans-serif;
 }
 
 .post .expand {
@@ -56,22 +152,21 @@ html {
   border-radius: 3px 3px 3px 3px;
   color: #555555;
   display: inline-block;
-  font-size: 12px;
   font-style: normal;
   line-height: 18px;
   margin-left: 10px;
   margin-right: 3px;
   padding: 0 10px;
   text-shadow: 0 1px white;
-  width: 80px;
   font-family:'Helvetica', 'Arial';
+  margin-right:80px;
 }
 
 .post .expand:hover {
-background: -moz-linear-gradient(bottom center, #EEE, #BBB) !important;
-background: -webkit-gradient(linear, center bottom, center top, from(#EEE), to(#BBB)) !important;
-box-shadow: 0px 1px 0px #fff inset !important;
-border: 1px solid #ADADAD !important;
+  background: -moz-linear-gradient(bottom center, #EEE, #BBB);
+  background: -webkit-gradient(linear, center bottom, center top, from(#EEE), to(#BBB));
+  box-shadow: 0px 1px 0px #fff inset;
+  border: 1px solid #ADADAD;
 }
 
 #posts .avatar {
@@ -79,46 +174,60 @@ border: 1px solid #ADADAD !important;
   position:absolute;
   right: -1px;
   top: -1px;
+}
+
+.avatar {
   box-shadow: 0px 0px 1px #999;
   -webkit-box-shadow: 0px 0px 1px #666;
   -moz-box-shadow: 0px 0px 1px #666;
   border: 1px solid white;
-  border-radius: 3px;
+  border-radius: 3px;  
+}
+
+.post .author {
+  color: #666;
+  font-weight: bold;
+  text-decoration:none;
+}
+
+.post .user_points {
+  color: #999;
+  margin-right: 60px;
+}
+
+.post .time {
+  color: #888;
+  font-weight: bold;
 }
 
 .post .body {
   min-height:$avatar_size;
-  padding:15px;
+  padding:15px 10px 0px 10px;
+  font:normal small verdana, arial, helvetica, sans-serif
 }
 
-.post .who_when {
-  font-size:0.8em;
-}
-
-.post .attachments {
+.file {
   font-size:0.8em;
   margin:10px 20px;
   padding:5px;
 }
 
-.post .attachments a {
+a.file {
   font-size:0.9em;
   font-weight:bold;
-  color:darken(#A2D7FC, 20%);
+  color:darken(#A2D7FC, 15%);
   background-color:darken(#5D6469, 20%);
   padding:3px 6px;
-  border-radius:9px;
+  border-radius:10px;
   text-decoration:none;
   margin-right:3px;
 }
 
-.post .attachments a:hover {
+a.file:hover {
   font-size:0.9em;
   font-weight:bold;
   color:#A2D7FC;
   background-color:#5D6469;
-  padding:3px 5px;
-  border-radius:8px;
   text-decoration:none;
   margin-right:3px;
 }
@@ -131,7 +240,8 @@ border: 1px solid #ADADAD !important;
 #content {
   float:left;
   width:610px;
-  border:1px dotted black;
+  border:1px dotted #ccc;
+  border-radius:10px;
   padding:10px;
 }
 
@@ -139,7 +249,8 @@ border: 1px solid #ADADAD !important;
   float:right;
   padding:20px;
   width:215px;
-  border:1px dotted black;
+  border:1px dotted #ccc;
+  border-radius:10px;
 }
 
 #search {
@@ -166,3 +277,37 @@ border: 1px solid #ADADAD !important;
   right:5px;
 }
 
+#file_list {
+  list-style-type:none;
+  margin:0;
+  padding:0;
+  background: -moz-linear-gradient(top center, #f1f1f1, #E5E5E5);
+  background: -webkit-gradient(linear, center top, center bottom, from(#FBFBFB), to(#E5E5E5));
+  box-shadow: -1px 1px 6px #666666;
+  -webkit-box-shadow:-1px 1px 6px #666666;
+  -moz-box-shadow: -1px 1px 6px #666666;
+  border: 1px solid white;
+  margin: 10px 1px 15px 0px;
+  border-radius: 3px;
+  text-align:center;
+}
+
+#file_list li a.graylink {
+  color: #888;
+  text-decoration: none;
+}
+
+#file_list li a.graylink:hover {
+  color: #666;
+};
+
+#file_list li {
+  color: #888888;
+  font: bold x-small/18px verdana,arial,helvetica,sans-serif;
+  padding-top: 15px;
+}
+
+#file_list a.file {
+  margin:0;
+  line-height:22px;
+}

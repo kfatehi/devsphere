@@ -14,25 +14,26 @@ class User < ActiveRecord::Base
   attr_accessible :nickname, :email, :password, :password_confirmation, :remember_me
   attr_protected :is_admin
   
-  before_save :check_if_admin
+  before_save :setup_user
 
   def gravatar
     "http://www.gravatar.com/avatar.php?gravatar_id=#{Digest::MD5.hexdigest self.email}&default=identicon"
   end
   
   def admin?
-    self.is_admin.present?
+    self.is_admin
   end
 
   def admin!
-    self.update_attribute(:is_admin, true)
+    self.update_column(:is_admin, true)
   end
 
   def unadmin!
-    self.update_attribute(:is_admin, false)
+    self.update_column(:is_admin, false)
   end
 
-  def check_if_admin
-    self.is_admin = true if ADMINS.include?(self.email)
+  def setup_user
+    self.is_admin = ADMINS.include?(self.email)
+    self.points = 0
   end
 end

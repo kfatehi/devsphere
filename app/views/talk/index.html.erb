@@ -7,7 +7,7 @@
   <%= select_tag :time_filter, options_for_select(["From Last Week"])%>
 </div>
 <div id="posts">
-  <%= link_to_new_post("New Thread") if user_signed_in? %>
+  <%= link_to_new_post("New Thread", :class=>"silver_button new_thread") if user_signed_in? %>
   <% @posts.each do |post| %>
     <%= render_post post %>
   <% end %>

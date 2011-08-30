@@ -1,20 +1,20 @@
-<%= link_to link_text, "#", :class=>:shytoggle %>
-<div class="shybox" style="display:none">
+<%= link_to link_text, "#", :class=>"shytoggle #{link_class}" %>
+<div class="shybox new_post" style="display:none">
   <%= form_for @new_post, :html => {:multipart => true} do |f| %>
     <%= f.hidden_field :parent_id, :value=>parent.id if parent.present? %>
     <%= f.text_area :body %><br>
 
-    <%= submit_tag "Submit" %>
-    <%= button_tag "Cancel", :class=>"hide_parent" %>
-    <%= button_tag "Add Attachment", :class=>"add_attachment" %>
-
-    <div class="attachment_fields">
-      <%= fields_for "attachment[0]" do |f| %>
-        <%= button_tag "Remove Attachment", :class=>"remove_attachment" %>
-        <%= f.label :file, "Attachment: " %>
-        <%= f.file_field :file %><br>
-      <% end %>
-    </div>
-  
+    <div class="actions">
+      <%= button_tag "Attach Another File", :class=>"add_attachment" %>
+      <div class="attachment_fields">
+        <%= fields_for "attachment[0]" do |f| %>
+          <%= f.label :file, "File: " %>
+          <%= f.file_field :file %>
+          <%= button_tag "Clear", :class=>"remove_attachment" %>
+        <% end %>
+      </div>
+      <%= submit_tag "Submit", :class=>"finish" %>
+      <%= button_tag "Cancel", :class=>"hide_parent finish" %>
+    </div>  
   <% end %>
 </div>
