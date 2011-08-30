@@ -1,2 +1,6 @@
-http://cry.li/files/mockups/temp1.png
-Add attachments system.
+Add pagination to index page for posts and files list.
+Ability to edit posts.
+Get the temporal dropdown to work. ("From Last Week")
+Get hashtags to work.
+Get search to work.
+Work on the rest of devsphere, the portal of which can include git commits
