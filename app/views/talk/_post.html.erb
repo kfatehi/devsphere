@@ -1,22 +1,17 @@
 <div class="post">
   <%= image_tag post.user.gravatar, :class=>"avatar" %>
-  <div class="body"><%= post.body %>
-  
 
+  <div class="top_bar">
+    <%= link_to '[-]', '#', :class=>"expand" %>
   </div>
+
+  <div class="expandable">
+
+  <div class="body"><%= post.body.html_safe %></div>
   <div class="who_when">
     posted by <%= link_to post.user.nickname, talk_user_profile_path(post.user) %>
     <%= time_ago_in_words post.created_at %> ago
   </div>
-  <% if user_signed_in? %>
-    <div class="actions">
-    <% if only_post %>
-      <%= link_to "See Full Thread", talk_thread_path(post) %>
-    <% else %>
-      <%= link_to_new_post("Reply", :parent=>post) if can_nest?(depth) %>
-    <% end %>
-    </div>
-  <% end %>
 
   <% if (attachments = post.attachments) && attachments.any? %>
     <div class="attachments">
@@ -25,12 +20,24 @@
       <% end %>
     </div>
   <% end %>
+
+  <% if user_signed_in? %>
+    <div class="bottom_actions">
+    <% if only_post %>
+      <%= link_to "See Full Thread", talk_thread_path(post) %>
+    <% else %>
+      <%= link_to_new_post("Reply", :parent=>post) if can_nest?(depth) %>
+    <% end %>
+    </div>
+  <% end %>
   
-  <% if (replies = post.replies) && !only_post %>
-    <div class="children">
+  <% if !only_post && (replies = post.replies) %>
+    <div class="replies">
       <% replies.each do |reply| %>
         <%= render_post reply, :depth=>depth %>
       <% end %>
     </div>
-  <% end %>  
+  <% end %>
+
+  </div>
 </div>

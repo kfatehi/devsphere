@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110828225005) do
+ActiveRecord::Schema.define(:version => 20110830030300) do
 
   create_table "attachments", :force => true do |t|
     t.string   "file"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(:version => 20110828225005) do
     t.string   "nickname"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "is_admin"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

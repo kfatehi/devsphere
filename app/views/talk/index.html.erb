@@ -9,9 +9,7 @@
 <div id="posts">
   <%= link_to_new_post("New Thread") if user_signed_in? %>
   <% @posts.each do |post| %>
-    <div class="top_level">
-      <%= render_post post %>
-    </div>
+    <%= render_post post %>
   <% end %>
   <center><%= link_to "Return to top", "#" %></center>
 </div>

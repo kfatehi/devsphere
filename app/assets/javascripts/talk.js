@@ -2,6 +2,7 @@ $(function() {
   $('.shytoggle').click(function(){
     $(this).next().show();
     $(this).hide();
+    return false;
   });
   $('.shybox .hide_parent').click(function(){
     $(this).parents('.shybox').hide();
@@ -9,8 +10,12 @@ $(function() {
     return false;
   });
 
-  $('.shift_click').click(function(){
-    
+  $('.post .expand').live('click', function() {
+    var button = $(this);
+    $(this).parent().next('div.expandable').toggle('fast', 'easeInQuint', function () {
+      button.text(($(this).is(':visible') ? '[-]' : '[+]'));
+    });
+    return false;
   });
 
   $('.add_attachment').click(function(){

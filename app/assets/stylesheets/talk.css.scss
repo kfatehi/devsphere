@@ -5,7 +5,26 @@
 $avatar_size: 48px;
 
 html {
-  font-family:"Helvetica", Helvetica, sans-serif;
+  font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+
+#posts .post {
+  background: -moz-linear-gradient(top center, #f1f1f1, #E5E5E5);
+  background: -webkit-gradient(linear, center top, center bottom, from(#FBFBFB), to(#E5E5E5));
+  box-shadow: 0px 0px 1px #999;
+  -webkit-box-shadow: 0px 0px 1px #666;
+  -moz-box-shadow: 0px 0px 1px #666;
+  border: 1px solid white;
+  padding: 10px 0 5px 10px;
+  margin: 10px 1px 20px 0px;
+  border-radius: 3px;
+  position:relative;
+  overflow:hidden;
+}
+
+.post .replies {
+  margin-left:10px;
 }
 
 .flash {
@@ -23,23 +42,53 @@ html {
   border:1px solid #E01B4C;
 }
 
+#posts {
+  margin:30px auto auto auto;
+}
+
 .post .actions {
   font-size: 0.8em;
   margin:10px;
 }
 
-#posts .avatar {
-  height:$avatar_size;
-  float:left;
-  margin:5px;
+.post .expand {
+  border: 1px solid transparent;
+  border-radius: 3px 3px 3px 3px;
+  color: #555555;
+  display: inline-block;
+  font-size: 12px;
+  font-style: normal;
+  line-height: 18px;
+  margin-left: 10px;
+  margin-right: 3px;
+  padding: 0 10px;
+  text-shadow: 0 1px white;
+  width: 80px;
+  font-family:'Helvetica', 'Arial';
 }
 
-#posts .post {
-  clear:both;
+.post .expand:hover {
+background: -moz-linear-gradient(bottom center, #EEE, #BBB) !important;
+background: -webkit-gradient(linear, center bottom, center top, from(#EEE), to(#BBB)) !important;
+box-shadow: 0px 1px 0px #fff inset !important;
+border: 1px solid #ADADAD !important;
+}
+
+#posts .avatar {
+  height:$avatar_size;
+  position:absolute;
+  right: -1px;
+  top: -1px;
+  box-shadow: 0px 0px 1px #999;
+  -webkit-box-shadow: 0px 0px 1px #666;
+  -moz-box-shadow: 0px 0px 1px #666;
+  border: 1px solid white;
+  border-radius: 3px;
 }
 
 .post .body {
   min-height:$avatar_size;
+  padding:15px;
 }
 
 .post .who_when {
@@ -101,36 +150,14 @@ html {
   float:right;
 }
 
-#posts {
-  clear:both;
-  margin:30px auto auto auto;
-  background-color:lighten(#ccc, 10%);
-}
-
-.children .post {
-  background-color:#cbc;
-  margin:10px auto;
-}
-
-#posts .top_level {
-  background-color:#bcc;
-  margin:10px auto;
-}
-
-.children {
-  clear:both;
-  margin:10px auto  auto 20px;
-  background-color:lighten(#bcc, 10%);
-}
-
 .shybox {
   position:relative;
 }
 
 .shybox textarea {
   height: 180px;
-  margin: 10px;
-  width: 565px;
+  margin: 10px auto;
+  width: 97%;
 }
 
 .shybox .close {
