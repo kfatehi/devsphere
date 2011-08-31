@@ -1,5 +1,10 @@
 class AttachmentsController < ApplicationController
   before_filter :authenticate_user!
+
+  def index
+    @files = Attachment.new_to_old.page(params[:page])
+  end
+
   def create
     upload = current_user.attachments.new params[:attachment]
     if upload.save

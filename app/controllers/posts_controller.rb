@@ -7,8 +7,16 @@ class PostsController < ApplicationController
       points += 1
       if attach = params[:attachment]
         attach.each do |n,f|
-          current_user.attachments.create f.merge(:post_id=>post.id)
-          points += 1
+          attachment = current_user.attachments.new f.merge(:post_id=>post.id)
+          if attachment.save
+            points += 1
+          else
+            flash[:alert] = %{
+              There was a problem with your attachment.<br><b>
+              #{attachment.errors.full_messages.join('<br>')}</b>
+            }
+            redirect_to :back
+          end
         end
       end
       current_user.update_column(:points, points)

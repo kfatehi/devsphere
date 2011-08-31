@@ -12,7 +12,7 @@ class Post < ActiveRecord::Base
   
   before_save :process_body
 
-  self.per_page = 10
+  self.per_page = 15
 
   def self.threads
     # Only get the top level posts

@@ -10,6 +10,8 @@
         <%= fields_for "attachment[0]" do |f| %>
           <%= f.label :file, "File: " %>
           <%= f.file_field :file %>
+          <%= f.label :category, "Category: " %>
+          <%= f.select :category, Attachment::CATEGORIES, {:include_blank => true} %>
           <%= button_tag "Clear", :class=>"remove_attachment" %>
         <% end %>
       </div>

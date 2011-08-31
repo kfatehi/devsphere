@@ -6,6 +6,7 @@ Devsphere::Application.routes.draw do
   get '/talk/users/:id/profile' => 'talk#user_profile', :as => :talk_user_profile
   get '/talk/threads/:id' => 'talk#single_thread', :as => :talk_thread
   get '/talk/post/:id' => 'talk#permalink', :as => :talk_permalink
+
   root :to => "talk#index"
 
   # The priority is based upon order of creation:

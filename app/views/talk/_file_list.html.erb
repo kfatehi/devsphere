@@ -1,5 +1,5 @@
 <ul id="file_list">
-  <%= will_paginate @files, :previous_label=>"←", :next_label=>"→" %>
+  <%= link_to "jump to file db", attachments_path %>
   <% @files.each do |f| %>
     <li>
       <%= link_to f.user.nickname, talk_user_profile_path(f.user), :class=>:graylink %> (<%= f.user.points %>)
@@ -10,5 +10,5 @@
       <%= time_ago_in_words f.created_at %> ago
     </li>
   <% end %>
-  <%= will_paginate @files, :previous_label=>"←", :next_label=>"→" %>
+  <%= link_to "jump to file db", attachments_path %>
 </ul>

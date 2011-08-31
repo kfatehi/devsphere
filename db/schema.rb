@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110830074306) do
+ActiveRecord::Schema.define(:version => 20110831063733) do
 
   create_table "attachments", :force => true do |t|
     t.string   "file"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20110830074306) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "category"
   end
 
   create_table "posts", :force => true do |t|
@@ -43,8 +44,8 @@ ActiveRecord::Schema.define(:version => 20110830074306) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                                 :default => "", :null => false
-    t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
+    t.string   "email",                                 :default => "",    :null => false
+    t.string   "encrypted_password",     :limit => 128, :default => "",    :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -56,7 +57,7 @@ ActiveRecord::Schema.define(:version => 20110830074306) do
     t.string   "nickname"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "is_admin"
+    t.boolean  "is_admin",                              :default => false
     t.integer  "points"
   end
 

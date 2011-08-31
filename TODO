@@ -1,6 +1,14 @@
-Add pagination to index page for posts and files list.
-Ability to edit posts.
-Get the temporal dropdown to work. ("From Last Week")
-Get hashtags to work.
-Get search to work.
-Work on the rest of devsphere, the portal of which can include git commits
+- Add a files database page
+- Add category for files
+  - On the upload form
+  - In the files database (sortable)
+- Ability to edit posts.
+- Get the temporal dropdown to work. ("From Last Week")
+- Get hashtags to work.
+- Get search to work.
+- Work on the rest of devsphere
+  - The portal needs to show snippet of everything, including:
+    - Talk
+      - Posts
+      - Uploads
+    - Git Commits
