@@ -2,8 +2,8 @@ class TalkController < ApplicationController
   before_filter :prepare_objects
   def index
     #later we will add pagination
-    @posts = Post.threads
-    @files = Attachment.order("created_at DESC")
+    @posts = Post.threads.page(params[:tpage])
+    @files = Attachment.new_to_old.page(params[:fpage])
   end
 
   def user_profile

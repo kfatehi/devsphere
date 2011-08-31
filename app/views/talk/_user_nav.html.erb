@@ -1,8 +1,8 @@
 <div id="usernav">
   <% if current_user %>
-    <%= image_tag current_user.gravatar, :class=>"avatar" %><br>
+    <%= image_tag current_user.gravatar, :class=>"avatar" %>
+    <%= link_to "Logout", "users/sign_out", :method=>:delete %><br><br>
     Welcome back, <%= link_to current_user.nickname, talk_user_profile_path(current_user) %>!
-    <%= link_to "Logout", "users/sign_out", :method=>:delete %>
   <% else %>
     <%= form_for @new_user, :url=>user_session_path(@new_user) do |f| %>
       <p><%= f.label :email %><br><%= f.text_field :email %></p>

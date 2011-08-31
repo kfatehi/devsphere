@@ -4,4 +4,8 @@ class Attachment < ActiveRecord::Base
   belongs_to :user
   validates :file, :presence => true
   mount_uploader :file, FileUploader
+  self.per_page = 5
+  def self.new_to_old
+    order("created_at DESC")
+  end
 end

@@ -2,14 +2,12 @@
   <%= text_field_tag :search %>
   <%= button_tag "Search" %>
 </div>
-<div id="filters">
-  <%= button_tag "All Uploads" %>
-  <%= select_tag :time_filter, options_for_select(["From Last Week"])%>
-</div>
 <div id="posts">
   <%= link_to_new_post("New Thread", :class=>"silver_button new_thread") if user_signed_in? %>
+  <%= will_paginate @posts %>
   <% @posts.each do |post| %>
     <%= render_post post %>
   <% end %>
+  <%= will_paginate @posts %>
   <center><%= link_to "Return to top", "#" %></center>
 </div>

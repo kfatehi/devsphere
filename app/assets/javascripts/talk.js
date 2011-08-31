@@ -1,3 +1,4 @@
+
 $(function() {
   $('.shytoggle').click(function(){
     $(this).next().show();

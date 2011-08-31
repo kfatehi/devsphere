@@ -17,7 +17,9 @@
   <div id="talkwrapper">
     <div id="rightcol">
       <%= custom_time Time.now %>
-      <p class="alert">You must be logged in to post or view file attachments</p>
+      <% unless user_signed_in? %>
+        <p class="alert">You must be logged in to post or view file attachments</p>
+      <% end %>
       <%= render :partial=>"user_nav" %>
       <%= render :partial=>"file_list" if user_signed_in? && @files.present? %>
     </div>
