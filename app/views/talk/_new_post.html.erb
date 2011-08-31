@@ -7,11 +7,11 @@
     <div class="actions">
       <%= button_tag "Attach Another File", :class=>"add_attachment" %>
       <div class="attachment_fields">
-        <%= fields_for "attachment[0]" do |f| %>
-          <%= f.label :file, "File: " %>
-          <%= f.file_field :file %>
-          <%= f.label :category, "Category: " %>
-          <%= f.select :category, Attachment::CATEGORIES, {:include_blank => true} %>
+        <%= f.fields_for "attachments[0]" do |a| %>
+          <%= a.label :file, "File: " %>
+          <%= a.file_field :file %>
+          <%= a.label :category, "Category: " %>
+          <%= a.select :category, Attachment::CATEGORIES, {:include_blank => true} %>
           <%= button_tag "Clear", :class=>"remove_attachment" %>
         <% end %>
       </div>

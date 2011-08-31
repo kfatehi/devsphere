@@ -1,25 +1,12 @@
 class PostsController < ApplicationController
   before_filter :authenticate_user!, :only=>[:create]
   def create
-    points = current_user.points
+    new_points = params[:post][:attachments].size + 1
     post = current_user.posts.new(params[:post])
+    # This is not working.... accepts_nested_attributes_for doesnt seem to work for this either
+    # Probably best to just use a transaction instead of all this bullshit
     if post.save
-      points += 1
-      if attach = params[:attachment]
-        attach.each do |n,f|
-          attachment = current_user.attachments.new f.merge(:post_id=>post.id)
-          if attachment.save
-            points += 1
-          else
-            flash[:alert] = %{
-              There was a problem with your attachment.<br><b>
-              #{attachment.errors.full_messages.join('<br>')}</b>
-            }
-            redirect_to :back
-          end
-        end
-      end
-      current_user.update_column(:points, points)
+      current_user.update_column(:points, current_user.points + new_points)
       flash[:notice] = "Thanks for contributing!"
     else
       flash[:alert] = %{

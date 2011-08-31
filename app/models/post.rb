@@ -1,4 +1,5 @@
 class Post < ActiveRecord::Base
+  self.per_page = 15
   DEPTH_LIMIT = 8 # How deep replies can nest
   belongs_to :user
   belongs_to :post
@@ -11,8 +12,6 @@ class Post < ActiveRecord::Base
   validates :user_id, :presence => true
   
   before_save :process_body
-
-  self.per_page = 15
 
   def self.threads
     # Only get the top level posts
