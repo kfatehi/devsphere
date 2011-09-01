@@ -7,7 +7,7 @@
     <div class="actions">
       <%= button_tag "Attach Another File", :class=>"add_attachment" %>
       <div class="attachment_fields">
-        <%= f.fields_for "attachments[0]" do |a| %>
+        <%= f.fields_for :attachments do |a| %>
           <%= a.label :file, "File: " %>
           <%= a.file_field :file %>
           <%= a.label :category, "Category: " %>

@@ -11,6 +11,10 @@ class Post < ActiveRecord::Base
   validates :body, :presence => true, :length=>{:minimum=>1}
   validates :user_id, :presence => true
   
+  accepts_nested_attributes_for :attachments,
+    :reject_if=>lambda { |a| a[:file].blank? },
+    :allow_destroy=>true
+
   before_save :process_body
 
   def self.threads

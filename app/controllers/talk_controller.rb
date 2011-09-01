@@ -24,6 +24,7 @@ class TalkController < ApplicationController
   def prepare_objects
     @new_user = User.new
     @new_post = Post.new
+    @new_post.attachments.build
     @new_attachment = Attachment.new
   end
 end

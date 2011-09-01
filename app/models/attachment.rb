@@ -7,6 +7,8 @@ class Attachment < ActiveRecord::Base
   validates :category, :inclusion => { :in => CATEGORIES }
   mount_uploader :file, FileUploader
   self.per_page = 30
+  
+
   def self.new_to_old
     order("created_at DESC")
   end

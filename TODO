@@ -1,11 +1,8 @@
-- Add a files database page
-- Add category for files
-  - On the upload form
-  - In the files database (sortable)
+- Add a sortable files database page
 - Ability to edit posts.
-- Get the temporal dropdown to work. ("From Last Week")
 - Get hashtags to work.
 - Get search to work.
+- Detect & embed youtube links and images and shit that are pasted in the post body
 - Work on the rest of devsphere
   - The portal needs to show snippet of everything, including:
     - Talk

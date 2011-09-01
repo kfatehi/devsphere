@@ -26,8 +26,12 @@ $(function() {
   $('.add_attachment').click(function(){
     var n = $(this).siblings('.attachment_fields').length;
     var fields = $(this).siblings('.attachment_fields').first().clone();
-    fields.children('input').attr('id', 'attachment_'+n+'_file');
-    fields.children('input').attr('name', 'attachment['+n+'][file]');
+
+    fields.children('input[type="file"]').attr('id', 'post_attachments_attributes_'+n+'_file');
+    fields.children('select').attr('id', 'post_attachments_attributes_'+n+'_category');
+
+    fields.children('input[type="file"]').attr('name', 'post[attachments_attributes]['+n+'][file]');
+    fields.children('select').attr('name', 'post[attachments_attributes]['+n+'][category]');
     $(this).after('<div class="attachment_fields">'+fields.html()+'</div>');
     return false;
   });
