@@ -1,5 +1,6 @@
-<ul id="file_list">
-  <%= link_to "jump to file db", attachments_path %>
+<% unless current_page? file_db_path %>
+<ul class="file_list">
+  <%= link_to "Jump to File DB", file_db_path %>
   <% @files.each do |f| %>
     <li>
       <%= link_to f.post.user.nickname, talk_user_profile_path(f.post.user), :class=>:graylink %> (<%= f.post.user.points %>)
@@ -10,5 +11,6 @@
       <%= time_ago_in_words f.created_at %> ago
     </li>
   <% end %>
-  <%= link_to "jump to file db", attachments_path %>
+  <%= link_to "Jump to File DB", file_db_path %>
 </ul>
+<% end %>

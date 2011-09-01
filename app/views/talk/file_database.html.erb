@@ -1,0 +1,18 @@
+<table class="file_list file_db">
+  <tr>
+    <th>Nick</th>
+    <th>File</th>
+    <th>Kind</th>
+    <th>Post</th>
+    <th>Date</th>
+  <tr>
+<% @files.each do |f| %>
+  <tr class="<%= cycle('even', 'odd') %>">
+    <td><%= link_to f.post.user.nickname+" (#{f.post.user.points})", talk_user_profile_path(f.post.user), :class=>:graylink %></td>
+    <td><%= link_to f.file_identifier, f.file_url, :class=>'file' %></td>
+    <td><%= f.category %></td>
+    <td><%= link_to "link", talk_permalink_path(f.post), :class=>:graylink %></td>
+    <td><%= f.created_at.strftime("%D") %></td>
+  <tr>
+  <% end %>
+</table>

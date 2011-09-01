@@ -1,9 +1,12 @@
 class TalkController < ApplicationController
   before_filter :prepare_objects
   def index
-    #later we will add pagination
     @posts = Post.threads.page(params[:page])
     @files = Attachment.new_to_old.limit(30)
+  end
+
+  def file_database
+    @files = Attachment.new_to_old.page(params[:page])
   end
 
   def user_profile

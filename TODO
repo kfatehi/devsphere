@@ -1,4 +1,4 @@
-- Add a sortable files database page
+- Make file db sortable. Paginate that too, but at a higher threshold
 - Ability to edit posts.
 - Get hashtags to work.
 - Get search to work.

@@ -59,7 +59,7 @@ a:hover {
   text-align: center;
 }
 
-#file_list .pagination {
+.file_list .pagination {
   font-size:small;
 }
 
@@ -348,7 +348,7 @@ a.file:hover {
   right:5px;
 }
 
-#file_list {
+.file_list {
   list-style-type:none;
   margin:0;
   padding:0;
@@ -364,22 +364,41 @@ a.file:hover {
   clear:both;
 }
 
-#file_list li a.graylink {
+.file_list li a.graylink {
   color: #888;
   text-decoration: none;
 }
 
-#file_list li a.graylink:hover {
+.file_list li a.graylink:hover {
   color: #666;
 };
 
-#file_list li {
+.file_list li {
   color: #888888;
   font: bold x-small/18px verdana,arial,helvetica,sans-serif;
-  padding-top: 15px;
+  padding: 5px;
 }
 
-#file_list a.file {
+.file_list a.file {
   margin:0;
   line-height:22px;
+}
+
+.file_db {
+  text-align:left;
+  width:100%;
+  border-collapse:collapse;
+}
+
+.file_db td {
+  padding:5px;
+  text-align:center;
+}
+
+.file_db th {
+  text-align:center;
+}
+
+.file_db tr.even {
+  background-color:darken(#E5E5E5, 5%);
 }

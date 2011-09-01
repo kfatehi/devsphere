@@ -1,11 +1,11 @@
 Devsphere::Application.routes.draw do
   devise_for :users
   resources :posts
-  resources :attachments
 
   get '/talk/users/:id/profile' => 'talk#user_profile', :as => :talk_user_profile
   get '/talk/threads/:id' => 'talk#single_thread', :as => :talk_thread
   get '/talk/post/:id' => 'talk#permalink', :as => :talk_permalink
+  get '/talk/file_db' => 'talk#file_database', :as => :file_db
 
   root :to => "talk#index"
 
