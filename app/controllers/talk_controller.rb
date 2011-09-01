@@ -22,9 +22,10 @@ class TalkController < ApplicationController
 
   private
   def prepare_objects
-    @new_user = User.new
     @new_post = Post.new
     @new_post.attachments.build
-    @new_attachment = Attachment.new
+    if @body_saver = session[:body_saver]
+      session[:body_saver] = nil
+    end
   end
 end

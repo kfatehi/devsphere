@@ -4,16 +4,15 @@ class PostsController < ApplicationController
   def create
     post = current_user.posts.new(params[:post])
     if post.save
-      # current_user.update_column(:points, current_user.points + new_points)
+      current_user.give_points_for(post)
       flash[:notice] = "Thanks for contributing!"
-      p "Saved\nSaved\nSaved\nSaved\nSaved\nSaved\nSaved\nSaved\nSaved\nSaved\nSaved\nSaved\nSaved\nSaved\nSaved\nSaved\nSaved\nSaved\nSaved\nSaved\nSaved\nSaved\nSaved\nSaved\nSaved\nSaved\n"
     else
       flash[:alert] = %{
         There was a problem creating your post.<br><b>
         #{post.errors.full_messages.join('<br>')}</b>
       }.html_safe
-      p "Failed\nFailed\nFailed\nFailed\nFailed\nFailed\nFailed\nFailed\nFailed\nFailed\nFailed\nFailed\nFailed\nFailed\nFailed\nFailed\nFailed\nFailed\nFailed\nFailed\nFailed\nFailed\nFailed\nFailed\n"
+      session[:body_saver] = post.body  
     end
-    redirect_to root_url
+    redirect_to :back
   end
 end

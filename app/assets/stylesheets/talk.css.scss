@@ -172,15 +172,30 @@ a.silver_button:hover {
   margin:15px auto;
   width:600px;
 }
+
+.body_saver {
+  margin:15px auto;
+  background-color:lighten(#DCE1E6, 40%);
+  padding:10px;
+  border:1px solid #DCE1E6;
+  width:600px;
+}
+
+.body_saver p.blurb {
+  font:bold 21px helvetica,arial,helvetica,sans-serif;
+  color:#888;
+  font-weight:bold;
+  text-align:center;
+  margin:0px;
+}
+
 .notice {
   background-color: lighten(#1BE04C, 40%);
   border:1px solid #1BE04C;
-  padding:5px;
 }
 .alert {
   background-color: lighten(#E01B4C, 40%);
   border:1px solid #E01B4C;
-  padding:5px;
 }
 
 #posts {

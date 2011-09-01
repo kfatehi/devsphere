@@ -13,6 +13,12 @@
   <% if alert.present? %>
     <p class="flash alert"><%= alert %></p>
   <% end %>
+  <% if @body_saver.present? %>
+    <div class="body_saver">
+      <p class="blurb">For your convenience, your text is below:</p>
+      <p><%= @body_saver %></p>
+    </div>
+  <% end %>
 
   <div id="talkwrapper">
     <div id="rightcol">
