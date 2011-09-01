@@ -12,9 +12,9 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :nickname, :email, :password, :password_confirmation, :remember_me
-  attr_protected :is_admin
+  attr_protected :is_admin, :points
   
-  before_save :setup_user
+  before_create :initial_setup
 
   def gravatar
     "http://www.gravatar.com/avatar.php?gravatar_id=#{Digest::MD5.hexdigest self.email}&default=identicon"
@@ -37,7 +37,7 @@ class User < ActiveRecord::Base
     self.update_column(:is_admin, false)
   end
 
-  def setup_user
+  def initial_setup
     self.is_admin = ADMINS.include?(self.email)
     self.points = 0
   end
