@@ -1,3 +1,4 @@
+
 devsphere is collaborative networking software. It combines the social networking facets you know with innovative linking features to create a platform where the process of an entire project can be aggregated and easily documented in one place.
 
 Features
@@ -33,6 +34,7 @@ Features
 10. Feedback
     a. comments
     b. polls
+11. Pensieve
 
 
 "Global means global, for both columns"
@@ -42,6 +44,8 @@ As I understand, we want the homepage or landing page to give us an overall, "gl
 devsphere, blending development and community
 
 "Friends" don't exist. All users are visible and can contact other users in the network -- just like in forums. 
+
+Pensieve -- one writes down a thought, which is put into a collection of thoughts from that user (or grouped in some other fashion). That thought can be referenced in future activity like file uploads or documents. (brainchild)
 
 Documents (notes) can be edited collaboratively or solo
 

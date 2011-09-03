@@ -1,3 +1,4 @@
+function liveUpdate () { $.get('talk/live_update') };
 
 $(function() {
   $('.shytoggle').click(function(){
@@ -43,4 +44,7 @@ $(function() {
       $(this).siblings('input').val('');
     return false;
   });
+
+  setInterval(liveUpdate, 20000); // FIXME implement me
+
 });

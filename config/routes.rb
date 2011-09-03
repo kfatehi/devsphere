@@ -6,7 +6,8 @@ Devsphere::Application.routes.draw do
   get '/talk/threads/:id' => 'talk#single_thread', :as => :talk_thread
   get '/talk/post/:id' => 'talk#permalink', :as => :talk_permalink
   get '/talk/file_db' => 'talk#file_database', :as => :file_db
-
+  get '/talk/live_update' => 'talk#live_update', :as => :live_update
+  
   root :to => "talk#index"
 
   # The priority is based upon order of creation:

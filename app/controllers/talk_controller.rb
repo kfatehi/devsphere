@@ -1,5 +1,7 @@
 class TalkController < ApplicationController
   before_filter :prepare_objects
+  before_filter :set_last_request_at
+
   def index
     @posts = Post.threads.page(params[:page])
     @files = Attachment.new_to_old.limit(30)
@@ -21,6 +23,14 @@ class TalkController < ApplicationController
   def permalink
     @post = Post.find(params[:id])
     render :single_thread if @post.top_level?
+  end
+  
+  def live_update
+    # 1 : indicates the presence of user on the website (for online status display)
+    # 2 : if any updates have occured on the page
+      # a : if a user goes offline 
+    @user = current_user
+    @online_users = User.online_users
   end
 
   private

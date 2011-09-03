@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_filter :authenticate_user!, :only=>[:create]
-
+  before_filter :set_last_request_at
+  
   def create
     post = current_user.posts.new(params[:post])
     if post.save

@@ -11,12 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110831063733) do
+ActiveRecord::Schema.define(:version => 20110903072805) do
 
   create_table "attachments", :force => true do |t|
     t.string   "file"
     t.integer  "post_id"
-    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "category"
@@ -59,6 +58,7 @@ ActiveRecord::Schema.define(:version => 20110831063733) do
     t.datetime "updated_at"
     t.boolean  "is_admin",                              :default => false
     t.integer  "points"
+    t.datetime "last_request_at"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

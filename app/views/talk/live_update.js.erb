@@ -1,0 +1,12 @@
+// Update user statuses
+
+var online_users = [<%= @online_users.map{|u| "'#{u}'"}.join(',') %>];
+$('.author_block').each(function (i, e) {
+  var user = $(e).children('a.author').text();
+  if ($.inArray(user, online_users) == -1 ) { // user not online
+    $(e).children('.presence').text('Offline');
+  } else 
+    $(e).children('.presence').text('Online');
+});
+
+// FIXME implement post insertion 

@@ -3,9 +3,15 @@
 
   <div class="top_bar">
     <%= link_to '[-]', '#', :class=>"expand" %>
-    <%= link_to post.user.nickname, talk_user_profile_path(post.user), :class=>"author" %>
-    <span class="user_points">(<%= post.user.points %>)</span>
-    <span class="time"><%= time_ago_in_words post.created_at %> ago</span>
+    <div class="info_block">
+      <span class="time"><%= time_ago_in_words post.created_at %> ago</span><br>
+      <%= link_to "permalink", talk_permalink_path(post) %>
+    </div>
+    <div class="author_block">
+      <%= link_to post.user.nickname, talk_user_profile_path(post.user), :class=>"author" %>  
+      (<%= post.user.points %>)<br>
+      <div class="presence">Online/Offline</div> <!-- FIXME make this work -->
+    </div>
   </div>
 
   <div class="expandable">
@@ -20,19 +26,7 @@
     </div>
   <% end %>
 
-  <div class="bottom_bar">
-    <%= link_to "permalink", talk_permalink_path(post) %>
-    <%= link_to "parent", '#', :class=>"jump_to_parent" unless post.top_level? %>
-    <% if only_post || current_page?(talk_permalink_path(post)) %>
-      <%= link_to "jump to thread", talk_thread_path(post) %>
-    <% else %>
-      <% if user_signed_in? %>
-        <%= link_to_new_post("reply", :parent=>post) if can_nest?(depth) %>
-        <%= %>
-      <% end %>
-    <% end %>
-  </div>
-  
+
   <% if !only_post && (replies = post.replies) %>
     <div class="replies">
       <% replies.each do |reply| %>
@@ -41,5 +35,16 @@
     </div>
   <% end %>
 
+    <div class="bottom_bar">
+      <%#= link_to "parent", '#', :class=>"jump_to_parent" unless post.top_level? %>
+      <% if only_post || current_page?(talk_permalink_path(post)) %>
+        <%= link_to "jump to thread", talk_thread_path(post) %>
+      <% else %>
+        <% if user_signed_in? %>
+          <%= link_to_new_post("reply", :parent=>post) if can_nest?(depth) %>
+          <%= %>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 </div>

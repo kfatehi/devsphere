@@ -1,6 +1,6 @@
 class Post < ActiveRecord::Base
   self.per_page = 15
-  DEPTH_LIMIT = 8 # How deep replies can nest
+  DEPTH_LIMIT = 1 # How deep replies can nest
   belongs_to :user
   belongs_to :post
   has_many :attachments, :dependent => :destroy

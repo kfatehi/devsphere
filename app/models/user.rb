@@ -16,6 +16,11 @@ class User < ActiveRecord::Base
   
   before_create :initial_setup
 
+  def self.online_users
+    time_range = 30.seconds.ago..Time.now
+    where(:last_request_at=>time_range).all.map {|u| u.nickname }
+  end
+
   def gravatar
     "http://www.gravatar.com/avatar.php?gravatar_id=#{Digest::MD5.hexdigest self.email}&default=identicon"
   end

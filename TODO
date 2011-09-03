@@ -1,3 +1,32 @@
+TODO
+
+- Make file db sortable. Paginate that too, but at a higher threshold
+- Ability to edit posts.
+- Get hashtags to work.
+- Get search to work.
+- Detect & embed youtube links and images and shit that are pasted in the post body
+- Work on the rest of devsphere
+- The portal needs to show snippet of everything, including:
+- Talk
+- Posts
+- Uploads
+- Git Commits
+- Make Steven not rage
+- Guess file category based on file type
+- Dynamic threads
+- Originating post (first level)
+- Responses nest under OP (second level)
+- All 'threads' are collapsed on page load
+- Arrange threads by 'date started' and 'most recent response'
+- Formatting suggestions per Steven
+- Quote functionality
+- highlight text -> quote it
+- Fix implementation of illegal post
+- Live updates
+- Notification system
+
+  -----
+
 - Make file db sortable. Paginate that too, but at a higher threshold
 - Ability to edit posts.
 - Get hashtags to work.
