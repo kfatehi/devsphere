@@ -1,6 +1,7 @@
 function liveUpdate () { $.get('talk/live_update') };
 
 $(function() {
+  liveUpdate();
   $('.shytoggle').click(function(){
     $(this).next().show();
     $(this).next().find('textarea#post_body').focus()
