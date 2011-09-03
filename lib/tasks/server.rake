@@ -1,9 +1,9 @@
 task :pstart do
-  sh 'RAILS_ENV=production passenger start -p6111 -d'
+  sh 'cat start.sh | bash'
 end
 
 task :pstop do
-  sh 'passenger stop -p6111'
+  sh 'cat stop.sh | bash'
 end
 
 task :start do
