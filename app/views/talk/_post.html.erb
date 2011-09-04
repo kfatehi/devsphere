@@ -1,39 +1,39 @@
-<div class="post">
+<div class="post post_id_<%= post.id %>">
   <%= image_tag post.user.gravatar, :class=>"avatar" %>
 
   <div class="top_bar">
     <%= link_to '[-]', '#', :class=>"expand" %>
     <div class="info_block">
-      <span class="time"><%= time_ago_in_words post.created_at %> ago</span><br>
+      <div class="time"><%= show_time_or_actions_for post %></div>
       <%= link_to "permalink", talk_permalink_path(post) %>
     </div>
     <div class="author_block">
-      <%= link_to post.user.nickname, talk_user_profile_path(post.user), :class=>"author" %>  
-      (<%= post.user.points %>)<br>
+      <%= link_to post.user.nickname, talk_user_profile_path(post.user), :class=>"author" %>
       <div class="presence"></div>
     </div>
   </div>
 
   <div class="expandable">
 
-  <div class="body"><%= post.body.html_safe %></div>
+    <div class="body"><%= post.body.html_safe %></div>
 
-  <% if user_signed_in? && (attachments = post.attachments) && attachments.any? %>
-    <div class="attachments">
-      <% attachments.each do |a| %>
-        <%= link_to a.file_identifier, a.file_url, :class=>"file" %>
-      <% end %>
-    </div>
-  <% end %>
+    <% if user_signed_in? && (attachments = post.attachments) && attachments.any? %>
+      <div class="attachments">
+        <% attachments.each do |a| %>
+          <%= link_to a.file_identifier, a.file_url, :class=>"file" %>
+        <% end %>
+      </div>
+    <% end %>
 
+    <%= render :partial=>'edit_post', :locals=>{:post=>post} if post.recent? %> 
 
-  <% if !only_post && (replies = post.replies) %>
-    <div class="replies">
-      <% replies.each do |reply| %>
-        <%= render_post reply, :depth=>depth %>
-      <% end %>
-    </div>
-  <% end %>
+    <% if !only_post && (replies = post.replies) %>
+      <div class="replies">
+        <% replies.each do |reply| %>
+          <%= render_post reply, :depth=>depth %>
+        <% end %>
+      </div>
+    <% end %>
 
     <div class="bottom_bar">
       <%#= link_to "parent", '#', :class=>"jump_to_parent" unless post.top_level? %>

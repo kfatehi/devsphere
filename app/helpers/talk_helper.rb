@@ -9,6 +9,16 @@ module TalkHelper
                                               :link_class=>opts[:class]}
   end
 
+  def show_time_or_actions_for(post)
+    if post.recent? && current_user == post.user
+      %{#{link_to 'delete', post_path(post), :method=>:delete,
+        :remote=>true, :confirm=>"Are you sure?"}
+        #{link_to 'edit', '#', :class=>'edit'}}.html_safe
+    else
+      'posted '+time_ago_in_words(post.created_at)+' ago'
+    end
+  end
+
   def can_nest?(depth)
     depth < Post::DEPTH_LIMIT
   end

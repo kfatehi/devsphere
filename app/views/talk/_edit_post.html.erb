@@ -1,0 +1,21 @@
+<div class="shybox edit_post" style="display:none">
+  <%= form_for post, :html => {:multipart => true, :remote=>true} do |f| %>
+    <%= f.hidden_field :parent_id, :value=>post.parent_id if post.parent_id.present? %>
+    <%= f.text_area :body %><br>
+
+    <div class="actions">
+      <%= button_tag "Attach Another File", :class=>"add_attachment" %>
+      <div class="attachment_fields">
+        <%= f.fields_for :attachments do |a| %>
+          <%= a.label :file, "File: " %>
+          <%= a.file_field :file %>
+          <%= a.label :category, "Category: " %>
+          <%= a.select :category, Attachment::CATEGORIES, {:include_blank => true} %>
+          <%= button_tag "Clear", :class=>"remove_attachment" %>
+        <% end %>
+      </div>
+      <%= submit_tag "Submit", :class=>"finish", :remote=>true %>
+      <%= button_tag "Cancel", :class=>"hide_parent finish" %>
+    </div>  
+  <% end %>
+</div>

@@ -25,11 +25,6 @@ class User < ActiveRecord::Base
     "http://www.gravatar.com/avatar.php?gravatar_id=#{Digest::MD5.hexdigest self.email}&default=identicon"
   end
   
-  def give_points_for(post)
-    points = self.points + post.attachments.count + 1
-    self.update_column(:points, points)
-  end
-
   def admin?
     self.is_admin
   end

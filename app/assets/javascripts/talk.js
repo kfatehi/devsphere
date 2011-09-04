@@ -25,6 +25,17 @@ $(function() {
     return false;
   });
 
+  $('.edit').click(function() {
+    console.log('foo');
+    post = $(this).parents('.post').children('div.expandable');
+    console.log(post);
+    post.children('.edit_post').show('fast', function () {
+      body = post.children('.body').text();
+      post.children('.edit_post').children('textarea').val(body);
+      $(this).next().find('textarea#post_body').focus()
+    });
+  });
+
   $('.add_attachment').click(function(){
     var n = $(this).siblings('.attachment_fields').length;
     var fields = $(this).siblings('.attachment_fields').first().clone();
