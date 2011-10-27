@@ -43,10 +43,6 @@ class Post < ActiveRecord::Base
     self.posts
   end
 
-  def recent?
-    true #self.created_at > 5.minutes.ago
-  end
-
   private
   def process_body
     regex = Regexp.new '((https?:\/\/|www\.)([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)'
@@ -83,6 +79,6 @@ class Post < ActiveRecord::Base
             gsub(/([^\n]\n)(?=[^\n])/, '\1<br />') + "</p>" 
  
     s    
-  end 
+end 
 
 end

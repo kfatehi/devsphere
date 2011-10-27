@@ -8,7 +8,7 @@
   <tr>
 <% @files.each do |f| %>
   <tr class="<%= cycle('even', 'odd') %>">
-    <td><%= link_to f.post.user.nickname, talk_user_profile_path(f.post.user), :class=>:graylink %></td>
+    <td><%= link_to f.post.user.nickname+" (#{f.post.user.points})", talk_user_profile_path(f.post.user), :class=>:graylink %></td>
     <td><%= link_to f.file_identifier, f.file_url, :class=>'file' %></td>
     <td><%= f.category %></td>
     <td><%= link_to "link", talk_permalink_path(f.post), :class=>:graylink %></td>

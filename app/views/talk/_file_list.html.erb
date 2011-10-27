@@ -3,7 +3,7 @@
   <%= link_to "Jump to File DB", file_db_path %>
   <% @files.each do |f| %>
     <li>
-      <%= link_to f.post.user.nickname, talk_user_profile_path(f.post.user), :class=>:graylink %>
+      <%= link_to f.post.user.nickname, talk_user_profile_path(f.post.user), :class=>:graylink %> (<%= f.post.user.points %>)
       <%= link_to "uploaded", talk_permalink_path(f.post), :class=>:graylink %>
       <br>
       <%= link_to f.file_identifier, f.file_url, :class=>'file' %>

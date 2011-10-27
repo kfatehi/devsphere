@@ -1,7 +1,0 @@
-<% if @updated %>
-  $('.post_id_<%= @post.id %>').hide('fast', 'easeOutQuad', function () {
-    $(this).remove();
-  });
-<% else %>
-  alert('Sorry, it has been more than 5 minutes! Ask an admin to delete it for you if you really want to remove this post.');
-<% end %>
