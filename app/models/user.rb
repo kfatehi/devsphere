@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
   attr_protected :is_admin, :points
   
   before_create :initial_setup
+  after_create :send_welcome_email
 
   def self.online_users
     time_range = 30.seconds.ago..Time.now
@@ -45,5 +46,9 @@ class User < ActiveRecord::Base
   def initial_setup
     self.is_admin = ADMINS.include?(self.email)
     self.points = 0
+  end
+  
+  def send_welcome_email
+    UserMailer.welcome_email(self).deliver
   end
 end

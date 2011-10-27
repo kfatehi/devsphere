@@ -1,3 +1,4 @@
+config/action_mailer_settings.rb
 database.yml
 .rvmrc
 *.sublime-project

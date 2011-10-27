@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+</head>
+<body>
+  <p><b><%= @author.nickname %> has contributed discussion @
+  <%= link_to 'cry.li/talk', 'http://cry.li/talk' %></b></p>
+  
+  <p><%= link_to 'Jump to the thread', talk_permalink_path(@post.top_level) %> </p>
+  <p><pre><%= @post.body %></pre></p>
+  <p><%= link_to 'Jump to the thread', talk_permalink_path(@post.top_level) %> </p>
+  
+</body>
+</html>

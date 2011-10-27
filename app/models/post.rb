@@ -16,6 +16,7 @@ class Post < ActiveRecord::Base
     :allow_destroy=>true
 
   before_save :process_body
+  after_create :send_notification_email
 
   def self.threads
     # Only get the top level posts
@@ -79,6 +80,9 @@ class Post < ActiveRecord::Base
             gsub(/([^\n]\n)(?=[^\n])/, '\1<br />') + "</p>" 
  
     s    
-end 
+  end 
 
+  def send_notification_email
+    UserMailer.notification_email(self).deliver
+  end
 end
