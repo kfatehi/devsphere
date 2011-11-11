@@ -83,6 +83,6 @@ class Post < ActiveRecord::Base
   end 
 
   def send_notification_email
-    UserMailer.notification_email(self)
+    UserMailer.notification_email(self).deliver
   end
 end

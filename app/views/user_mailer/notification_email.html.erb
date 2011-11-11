@@ -8,7 +8,7 @@
   <%= link_to 'cry.li/talk', 'http://cry.li/talk' %></b></p>
   
   <p><%= link_to 'Jump to the thread', talk_permalink_path(@post.top_level) %> </p>
-  <p><%= @author.nickname %> says <br><pre><%= @post.body %></pre></p>
+  <p><%= @author.nickname %> says <br><%= @post.body %></p>
   <p><%= link_to 'Jump to the thread', talk_permalink_path(@post.top_level) %> </p>
   
 </body>

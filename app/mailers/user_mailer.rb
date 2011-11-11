@@ -9,9 +9,10 @@ class UserMailer < ActionMailer::Base
   def notification_email(post)
     @author = post.user
     @post = post
-    mail_arr = []
+    users = []
     (User.all - [@author]).each do |user|
-      mail_arr << mail(:to=>user.email, :subject=>"Discussion is brewing @ cry.li").deliver
+      users << user
     end
+    mail_arr << mail(:to=>"do-not-reply@cry.li", :bcc=>users :subject=>"Discussion is brewing @ cry.li")
   end
 end
