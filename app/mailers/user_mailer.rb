@@ -13,6 +13,6 @@ class UserMailer < ActionMailer::Base
     (User.all - [@author]).each do |user|
       users << user
     end
-    mail_arr << mail(:to=>"do-not-reply@cry.li", :bcc=>users :subject=>"Discussion is brewing @ cry.li")
+    mail_arr << mail(:to=>"do-not-reply@cry.li", :bcc=>users, :subject=>"Discussion is brewing @ cry.li")
   end
 end
