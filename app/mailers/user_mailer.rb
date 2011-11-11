@@ -11,8 +11,7 @@ class UserMailer < ActionMailer::Base
     @post = post
     mail_arr = []
     (User.all - [@author]).each do |user|
-      mail_arr << mail(:to=>user.email, :subject=>"Discussion is brewing @ cry.li")
+      mail_arr << mail(:to=>user.email, :subject=>"Discussion is brewing @ cry.li").deliver
     end
-    return mail_arr
   end
 end
