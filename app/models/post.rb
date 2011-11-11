@@ -83,6 +83,8 @@ class Post < ActiveRecord::Base
   end 
 
   def send_notification_email
-    UserMailer.notification_email(self).each { |mail| mail.deliver }
+    mail_arr = UserMailer.notification_email(self)
+    puts "WTF? #{mail_arr.class}"
+    mail_arr.each { |mail| mail.deliver }
   end
 end
