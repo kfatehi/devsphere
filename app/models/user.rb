@@ -17,6 +17,10 @@ class User < ActiveRecord::Base
   before_create :initial_setup
   after_create :send_welcome_email
 
+  def ascii_only?
+    false
+  end
+
   def self.online_users
     time_range = 30.seconds.ago..Time.now
     where(:last_request_at=>time_range).all.map {|u| u.nickname }
