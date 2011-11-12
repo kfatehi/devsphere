@@ -1,9 +1,9 @@
 <%= @author.nickname %> has contributed discussion @ cry.li/talk
   
-Link to full thread: <%= talk_permalink_path(@post.top_level) %>
+Link to full thread: <%= "http://cry.li:6111/talk/post/#{@post.top_level.id}" %>
 --------------------------
 <%= @author.nickname %> says
 <%= @post.body %>
 --------------------------
-Link to full thread: <%= talk_permalink_path(@post.top_level) %>
+Link to full thread: <%= "http://cry.li:6111/talk/post/#{@post.top_level.id}" %>
 

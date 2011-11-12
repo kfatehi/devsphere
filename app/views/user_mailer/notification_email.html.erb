@@ -6,10 +6,10 @@
 <body>
   <p><b><%= @author.nickname %> has contributed discussion @
   <%= link_to 'cry.li/talk', 'http://cry.li/talk' %></b></p>
-  
-  <p><%= link_to 'Jump to the thread', talk_permalink_path(@post.top_level) %> </p>
-  <p><%= @author.nickname %> says <br><%= @post.body %></p>
-  <p><%= link_to 'Jump to the thread', talk_permalink_path(@post.top_level) %> </p>
+
+  <p><%= link_to 'Jump to the thread', "http://cry.li:6111/talk/post/#{@post.top_level.id}" %> </p>
+  <p><%= @author.nickname %> says <br><%= @post.body.html_safe %></p>
+  <p><%= link_to 'Jump to the thread', "http://cry.li:6111/talk/post/#{@post.top_level.id}" %> </p>
   
 </body>
 </html>
