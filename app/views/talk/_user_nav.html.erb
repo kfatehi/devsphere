@@ -1,11 +1,15 @@
 <div id="usernav">
+	<center><b>Teamspeak 3 server: cry.li</b></center>
   <% if current_user %>
     <%= image_tag current_user.gravatar, :class=>"avatar" %>
     <%= link_to "Logout", "users/sign_out", :method=>:delete %><br><br>
     Welcome back, <%= link_to current_user.nickname, talk_user_profile_path(current_user) %>!
   <% else %>
     <%= form_for :user, :url=>user_session_path do |f| %>
-      <p><%= f.label :email %><br><%= f.text_field :email %></p>
+      <p><%= f.label :email %><br><%=
+		# if (current_user) <-- lol, started, coding c style... this is ruby, u can drop 1-liners:
+		f.text_field :email if user_signed_in?
+%></p>
       <p><%= f.label :password %><br><%= f.password_field :password %></p>
       <%= f.submit "Login" %><br><%= link_to "Register", new_user_registration_path %>
     <% end %>
